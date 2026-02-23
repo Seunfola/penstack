@@ -1,0 +1,110 @@
+import type { NavItem, QuickAction, Transaction, Wallet } from "./types";
+
+export const navItems: readonly NavItem[] = [
+  { id: "dashboard", label: "Dashboard", icon: "dashboard", section: "moneyTools", active: true },
+  { id: "wallets", label: "Wallets", icon: "wallet", section: "moneyTools" },
+  { id: "convert", label: "Convert", icon: "convert", section: "moneyTools" },
+  { id: "send", label: "Send Money", icon: "send", section: "moneyTools" },
+  { id: "receive", label: "Receive Money", icon: "receive", section: "moneyTools" },
+  { id: "withdraw", label: "Withdraw", icon: "withdraw", section: "moneyTools" },
+  { id: "cards", label: "Cards", icon: "cards", section: "business" },
+  { id: "invoices", label: "Invoices", icon: "invoices", section: "business" },
+  { id: "analytics", label: "Analytics", icon: "analytics", section: "support" },
+  { id: "settings", label: "Settings", icon: "settings", section: "support" },
+] as const;
+
+export const wallets: readonly Wallet[] = [
+  {
+    id: "ngn",
+    countryCode: "NG",
+    currency: "NGN",
+    amountMasked: "N****",
+    accountMasked: "****95403",
+    verificationLabel: "KYC Level 1",
+    verificationTone: "blue",
+  },
+  {
+    id: "usd",
+    countryCode: "US",
+    currency: "USD",
+    amountMasked: "$****",
+    accountMasked: "****95403",
+    verificationLabel: "KYC Level 2",
+    verificationTone: "teal",
+  },
+  {
+    id: "gbp",
+    countryCode: "GB",
+    currency: "GBP",
+    amountMasked: "GBP****",
+    accountMasked: "****95403",
+    verificationLabel: "KYC Level 2",
+    verificationTone: "teal",
+  },
+  {
+    id: "eur",
+    countryCode: "EU",
+    currency: "EUR",
+    amountMasked: "EUR****",
+    accountMasked: "****95403",
+    verificationLabel: "Verified",
+    verificationTone: "blue",
+  },
+] as const;
+
+export const quickActions: readonly QuickAction[] = [
+  { id: "add-money", label: "Add Money", icon: "plus" },
+  { id: "convert", label: "Convert", icon: "convert" },
+  { id: "send", label: "Send", icon: "arrowUpRight" },
+  { id: "invoice", label: "Create Invoice", icon: "document" },
+] as const;
+
+export const recentTransactions: readonly Transaction[] = [
+  {
+    id: "john",
+    title: "John Smith",
+    subtitle: "Today, 2:30 PM",
+    countryCode: "US",
+    amount: "+$250.00",
+    amountTone: "green",
+    status: "Completed",
+    statusTone: "muted",
+    avatarTone: "mint",
+    icon: "check",
+  },
+  {
+    id: "sarah",
+    title: "Sarah Johnson",
+    subtitle: "Today, 1:15 AM",
+    amount: "-$180.00",
+    amountTone: "dark",
+    status: "Pending",
+    statusTone: "amber",
+    avatarTone: "blue",
+    icon: "convert",
+  },
+  {
+    id: "corp",
+    title: "Tech Corp Ltd",
+    subtitle: "Yesterday, 4:45 PM",
+    countryCode: "NG",
+    amount: "+EUR500.00",
+    amountTone: "green",
+    status: "Completed",
+    statusTone: "muted",
+    avatarTone: "rose",
+    icon: "arrowUpRight",
+  },
+  {
+    id: "subscription",
+    title: "Monthly Subscription",
+    subtitle: "Dec 28, 9:00 AM",
+    countryCode: "NG",
+    amount: "-GBP75.50",
+    amountTone: "dark",
+    status: "Reversed",
+    statusTone: "red",
+    avatarTone: "mint",
+    icon: "arrowUpRight",
+  },
+] as const;
