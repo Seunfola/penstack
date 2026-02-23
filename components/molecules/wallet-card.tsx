@@ -2,6 +2,7 @@ import { Icon } from "../atoms/icons";
 import { KycBadge } from "../atoms/kyc-badge";
 
 type WalletCardProps = {
+  walletId: string;
   countryCode: string;
   currency: string;
   amount: string;
@@ -9,9 +10,11 @@ type WalletCardProps = {
   badge: string;
   badgeTone: "blue" | "teal";
   isBalanceVisible: boolean;
+  onToggleVisibility: (walletId: string) => void;
 };
 
 export function WalletCard({
+  walletId,
   countryCode,
   currency,
   amount,
@@ -19,6 +22,7 @@ export function WalletCard({
   badge,
   badgeTone,
   isBalanceVisible,
+  onToggleVisibility,
 }: WalletCardProps) {
   return (
     <article className="h-[164px] rounded-[12px] border border-card-border bg-white px-4 py-3 shadow-[0_1px_2px_rgba(16,24,40,0.06)]">
@@ -38,7 +42,18 @@ export function WalletCard({
             {isBalanceVisible ? amount.replace(/\*/g, "0") : amount}
           </p>
         </div>
-        <Icon name="eyeOff" className="h-5 w-5 text-slate-muted" strokeWidth={1.9} />
+        <button
+          type="button"
+          onClick={() => onToggleVisibility(walletId)}
+          className="text-slate-muted hover:text-slate-700"
+          aria-label={isBalanceVisible ? `Hide ${currency} wallet balance` : `Show ${currency} wallet balance`}
+        >
+          <Icon
+            name={isBalanceVisible ? "eye" : "eyeOff"}
+            className="h-5 w-5"
+            strokeWidth={1.9}
+          />
+        </button>
       </div>
       <div className="mt-4 text-[12px] font-medium text-[#9BA8BD]">
         {account}

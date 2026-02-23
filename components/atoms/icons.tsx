@@ -19,6 +19,7 @@ import {
   Wallet,
   X,
   EyeOff,
+  Eye,
 } from "lucide-react";
 import type { IconName } from "@/domain/dashboard/types";
 
@@ -35,6 +36,7 @@ const iconMap = {
   settings: Settings,
   logout: LogOut,
   notification: Bell,
+  eye: Eye,
   eyeOff: EyeOff,
   plus: Plus,
   arrowUpRight: ArrowUpRight,

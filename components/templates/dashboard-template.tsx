@@ -27,7 +27,7 @@ export function DashboardTemplate() {
               onClick={() => setMobileSidebarOpen(false)}
               aria-label="Close navigation backdrop"
             />
-            <div className="relative z-10">
+            <div className="relative z-10 h-dvh min-h-dvh">
               <button
                 type="button"
                 className="absolute right-3 top-3 z-20 rounded-full bg-white p-1 text-slate-600"

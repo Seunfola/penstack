@@ -11,6 +11,7 @@ export type IconName =
   | "settings"
   | "logout"
   | "notification"
+  | "eye"
   | "eyeOff"
   | "plus"
   | "arrowUpRight"

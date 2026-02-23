@@ -4,9 +4,10 @@ import { create } from "zustand";
 import { navItems, quickActions, recentTransactions, wallets } from "@/domain/dashboard/data";
 
 interface DashboardState {
-  isBalanceVisible: boolean;
+  visibleWalletIds: string[];
   isMobileSidebarOpen: boolean;
-  toggleBalanceVisibility: () => void;
+  toggleWalletVisibility: (walletId: string) => void;
+  toggleAllWalletsVisibility: () => void;
   setMobileSidebarOpen: (isOpen: boolean) => void;
   navItems: typeof navItems;
   wallets: typeof wallets;
@@ -15,10 +16,24 @@ interface DashboardState {
 }
 
 export const useDashboardStore = create<DashboardState>((set) => ({
-  isBalanceVisible: false,
+  visibleWalletIds: [],
   isMobileSidebarOpen: false,
-  toggleBalanceVisibility: () =>
-    set((state) => ({ isBalanceVisible: !state.isBalanceVisible })),
+  toggleWalletVisibility: (walletId) =>
+    set((state) => {
+      const isVisible = state.visibleWalletIds.includes(walletId);
+      return {
+        visibleWalletIds: isVisible
+          ? state.visibleWalletIds.filter((id) => id !== walletId)
+          : [...state.visibleWalletIds, walletId],
+      };
+    }),
+  toggleAllWalletsVisibility: () =>
+    set((state) => {
+      const shouldShowAll = state.visibleWalletIds.length !== state.wallets.length;
+      return {
+        visibleWalletIds: shouldShowAll ? state.wallets.map((wallet) => wallet.id) : [],
+      };
+    }),
   setMobileSidebarOpen: (isOpen) => set({ isMobileSidebarOpen: isOpen }),
   navItems,
   wallets,

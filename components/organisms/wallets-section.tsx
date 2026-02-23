@@ -6,8 +6,10 @@ import { WalletCard } from "../molecules/wallet-card";
 
 export function WalletsSection() {
   const wallets = useDashboardStore((state) => state.wallets);
-  const isBalanceVisible = useDashboardStore((state) => state.isBalanceVisible);
-  const toggleBalanceVisibility = useDashboardStore((state) => state.toggleBalanceVisibility);
+  const visibleWalletIds = useDashboardStore((state) => state.visibleWalletIds);
+  const toggleWalletVisibility = useDashboardStore((state) => state.toggleWalletVisibility);
+  const toggleAllWalletsVisibility = useDashboardStore((state) => state.toggleAllWalletsVisibility);
+  const allVisible = visibleWalletIds.length === wallets.length;
 
   return (
     <section>
@@ -17,25 +19,27 @@ export function WalletsSection() {
         </h2>
         <button
           type="button"
-          onClick={toggleBalanceVisibility}
+          onClick={toggleAllWalletsVisibility}
           className="flex items-center gap-2 text-[15px] text-[#101828]"
-          aria-label={isBalanceVisible ? "Hide wallet balances" : "Show wallet balances"}
+          aria-label={allVisible ? "Hide all wallet balances" : "Show all wallet balances"}
         >
-          <Icon name="eyeOff" className="h-4 w-4" strokeWidth={2} />
-          {isBalanceVisible ? "Hide" : "Show"}
+          <Icon name={allVisible ? "eye" : "eyeOff"} className="h-4 w-4" strokeWidth={2} />
+          {allVisible ? "Hide" : "Show"}
         </button>
       </div>
       <div className="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
         {wallets.map((wallet) => (
           <WalletCard
             key={wallet.id}
+            walletId={wallet.id}
             countryCode={wallet.countryCode}
             currency={wallet.currency}
             amount={wallet.amountMasked}
             account={wallet.accountMasked}
             badge={wallet.verificationLabel}
             badgeTone={wallet.verificationTone}
-            isBalanceVisible={isBalanceVisible}
+            isBalanceVisible={visibleWalletIds.includes(wallet.id)}
+            onToggleVisibility={toggleWalletVisibility}
           />
         ))}
       </div>

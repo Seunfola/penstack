@@ -33,7 +33,7 @@ function SidebarSection({ title, section }: { title: string; section: NavSection
 
 export function Sidebar() {
   return (
-    <aside className="flex h-screen w-[236px] flex-col border-r border-[#DDE4EE] bg-panel px-[10px] py-6">
+    <aside className="flex h-dvh min-h-dvh w-[236px] flex-col border-r border-[#DDE4EE] bg-panel px-[10px] py-6">
       <div className="px-2">
         <AlecerLogo />
       </div>
