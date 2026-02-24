@@ -20,6 +20,7 @@ import {
   X,
   EyeOff,
   Eye,
+  User,
 } from "lucide-react";
 import type { IconName } from "@/domain/dashboard/types";
 
@@ -45,6 +46,7 @@ const iconMap = {
   copy: Copy,
   menu: Menu,
   close: X,
+  user: User,
 } as const;
 
 type IconProps = LucideProps & {

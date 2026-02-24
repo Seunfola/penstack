@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Project Goals
+
+This project aims to deliver a high-quality user interface with the following core principles:
+
+- Implementing a pixel-accurate UI based on a provided Figma design.
+- Writing clean, reusable React components.
+- Applying best practices for styling, state management, and project structure.
+- Ensuring responsiveness across screen sizes.
+
 ## Getting Started
 
 First, run the development server:

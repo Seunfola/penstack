@@ -19,6 +19,7 @@ export type IconName =
   | "check"
   | "copy"
   | "menu"
+  | "user"
   | "close";
 
 export type NavSectionKey = "moneyTools" | "business" | "support";
@@ -36,6 +37,7 @@ export interface Wallet {
   currency: string;
   countryCode: string;
   amountMasked: string;
+  actualAmount: string;
   accountMasked: string;
   verificationLabel: string;
   verificationTone: "blue" | "teal";
