@@ -1,11 +1,13 @@
 import { Icon } from "../atoms/icons";
 import { KycBadge } from "../atoms/kyc-badge";
+import ReactCountryFlag from "react-country-flag";
 
 type WalletCardProps = {
   walletId: string;
-  countryCode: string;
+  countryCode: string; 
   currency: string;
-  amount: string;
+  amount: string;        
+  actualAmount: string; 
   account: string;
   badge: string;
   badgeTone: "blue" | "teal";
@@ -18,6 +20,7 @@ export function WalletCard({
   countryCode,
   currency,
   amount,
+  actualAmount,
   account,
   badge,
   badgeTone,
@@ -25,21 +28,32 @@ export function WalletCard({
   onToggleVisibility,
 }: WalletCardProps) {
   return (
-    <article className="h-[164px] rounded-[12px] border border-card-border bg-white px-4 py-3 shadow-[0_1px_2px_rgba(16,24,40,0.06)]">
+    <article className="h-[194px] rounded-[12px] border border-card-border bg-white px-4 py-3 relative">
       <div className="flex items-start justify-between">
         <span />
         <KycBadge label={badge} tone={badgeTone} />
       </div>
+
       <div className="mt-6 flex items-end justify-between">
         <div>
-          <p className="text-[14px] text-slate-muted">
-            <span className="mr-2 inline-flex h-5 min-w-7 items-center justify-center rounded bg-[#ECF2FA] px-1 text-[10px] font-semibold text-[#4C5E7A]">
-              {countryCode}
+          <p className="text-[14px] text-slate-muted flex items-center gap-1">
+            <span className="inline-flex h-5 w-7 items-center justify-center rounded bg-[#65758B] p-[2px]">
+              <ReactCountryFlag
+                countryCode={countryCode}
+                svg
+                style={{
+                  width: "28px",
+                  height: "20px",
+                  objectFit: "cover",
+                  borderRadius: "1px",  
+                }}
+                title={countryCode}
+              />
             </span>
-            {currency}
+            <span>{currency}</span>
           </p>
-          <p className="mt-1 text-[30px] font-semibold leading-none tracking-[-0.02em] text-slate-900">
-            {isBalanceVisible ? amount.replace(/\*/g, "0") : amount}
+          <p className="mt-4 text-[30px] font-semibold leading-none tracking-[-0.02em]">
+            {isBalanceVisible ? actualAmount : amount}
           </p>
         </div>
         <button
@@ -50,12 +64,13 @@ export function WalletCard({
         >
           <Icon
             name={isBalanceVisible ? "eye" : "eyeOff"}
-            className="h-5 w-5"
+            className="h-4 w-4"
             strokeWidth={1.9}
           />
         </button>
       </div>
-      <div className="mt-4 text-[12px] font-medium text-[#9BA8BD]">
+
+      <div className="mt-4 text-[12px] font-medium text-[#8B96A1]">
         {account}
         <Icon name="copy" className="ml-1 inline h-3.5 w-3.5 text-brand-blue" strokeWidth={2.2} />
       </div>

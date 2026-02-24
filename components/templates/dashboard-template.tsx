@@ -19,7 +19,7 @@ export function DashboardTemplate() {
           <Sidebar />
         </div>
 
-        {isMobileSidebarOpen ? (
+        {isMobileSidebarOpen && (
           <div className="fixed inset-0 z-40 flex lg:hidden">
             <button
               type="button"
@@ -39,18 +39,19 @@ export function DashboardTemplate() {
               <Sidebar />
             </div>
           </div>
-        ) : null}
+        )}
 
         <main className="flex min-h-screen flex-1 flex-col">
           <Topbar />
           <div className="mx-auto w-full max-w-[1120px] px-4 py-8 md:px-6 lg:px-10">
-            <h1 className="text-[42px] font-semibold leading-none tracking-[-0.02em] text-[#1E293B] md:text-[48px]">
+            <h1 className="text-3xl font-semibold leading-tight tracking-tight text-[#1E293B] sm:text-4xl md:text-5xl lg:text-[48px]">
               Welcome back, Joy!
             </h1>
-            <p className="mt-2 text-[24px] leading-none tracking-[-0.02em] text-[#6B7A92] md:text-[28px]">
+            <p className="mt-2 text-sm leading-snug tracking-tight text-[#65758B] sm:text-xl md:text-2xl lg:text-[20px]">
               Here&apos;s your financial overview
             </p>
-            <div className="mt-7">
+
+            <div className="mt-7 space-y-6">
               <WalletsSection />
               <QuickActions />
               <TransactionsSection />

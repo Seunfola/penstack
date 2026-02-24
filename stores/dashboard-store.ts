@@ -6,9 +6,11 @@ import { navItems, quickActions, recentTransactions, wallets } from "@/domain/da
 interface DashboardState {
   visibleWalletIds: string[];
   isMobileSidebarOpen: boolean;
+  isSidebarCollapsed: boolean; // Add this
   toggleWalletVisibility: (walletId: string) => void;
   toggleAllWalletsVisibility: () => void;
   setMobileSidebarOpen: (isOpen: boolean) => void;
+  setSidebarCollapsed: (isCollapsed: boolean) => void; // Add this
   navItems: typeof navItems;
   wallets: typeof wallets;
   quickActions: typeof quickActions;
@@ -18,6 +20,7 @@ interface DashboardState {
 export const useDashboardStore = create<DashboardState>((set) => ({
   visibleWalletIds: [],
   isMobileSidebarOpen: false,
+  isSidebarCollapsed: false, 
   toggleWalletVisibility: (walletId) =>
     set((state) => {
       const isVisible = state.visibleWalletIds.includes(walletId);
@@ -35,6 +38,7 @@ export const useDashboardStore = create<DashboardState>((set) => ({
       };
     }),
   setMobileSidebarOpen: (isOpen) => set({ isMobileSidebarOpen: isOpen }),
+  setSidebarCollapsed: (isCollapsed) => set({ isSidebarCollapsed: isCollapsed }),
   navItems,
   wallets,
   quickActions,

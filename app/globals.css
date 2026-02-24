@@ -4,7 +4,7 @@
   --font-sans: var(--font-poppins);
   --color-brand-blue: #1677e6;
   --color-panel: #eff4fb;
-  --color-slate-muted: #64748b;
+  --color-slate-muted: #65758B;
   --color-card-border: #d7dee8;
 }
 
@@ -17,6 +17,6 @@
 body {
   margin: 0;
   background: #f7f9fc;
-  color: #1e293b;
+  color: #1A1F23;
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }

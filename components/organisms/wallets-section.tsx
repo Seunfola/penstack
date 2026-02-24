@@ -34,7 +34,8 @@ export function WalletsSection() {
             walletId={wallet.id}
             countryCode={wallet.countryCode}
             currency={wallet.currency}
-            amount={wallet.amountMasked}
+            amount={wallet.amountMasked} 
+            actualAmount={wallet.actualAmount} 
             account={wallet.accountMasked}
             badge={wallet.verificationLabel}
             badgeTone={wallet.verificationTone}
